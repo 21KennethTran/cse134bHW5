@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Custom Element</title>
+    <style>
+      social-media {
+        display: block;
+      }
+
+      social-media[platform="LinkedIn"] {
+        background-color: #0077b5; /* Red */
+        color: #fff;
+      }
+
+      social-media[platform="Github"] {
+        background-color: #333; /* Amber */
+        color: #fff;
+      }
+
+      social-media:hover {
+        opacity: 0.8;
+      }
+
+    </style>
+  </head>
+  <body>
+        <social-media platform="LinkedIn">LinkedIn</social-media>
+        <social-media platform="Github">GitHub</social-media>
+  </body>
+</html>
