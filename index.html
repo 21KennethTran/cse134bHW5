@@ -4,33 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My SWE Portfolio</title>
-    <style>
-        social-media {
-          display: block;
-        }
-  
-        social-media[platform="LinkedIn"] a {
-          background-color: #0077b5; /* Red */
-          color: #fff;
-        }
-  
-        social-media[platform="Github"] a {
-          background-color: #333; /* Amber */
-          color: #fff;
-        }
-  
-        social-media:hover {
-          opacity: 0.8;
-        }
-  
-      </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <hgroup>
-            <h1>Kenneth Tran</h1>
-            <h2>Software Engineer</h2>
-        </hgroup>
+        <h1>Kenneth Tran</h1>
         
         <nav>
             <ul>
@@ -43,17 +21,19 @@
     </header>
 
     <main>
-        <section>
-            <h2>About Me</h2>
-            <p>Hi, I'm a <b>software engineer</b>  passionate about building <i>scalable</i> and <i>efficient</i> web applications.</p>
+        <section class="about-me">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hi, I'm a <b>software engineer</b> passionate about building <i>scalable</i> and <i>efficient</i> web applications.</p>
+            </div>
             <img src="img/me.jpg" alt="my pp">
         </section>
 
         <br>
 
-        <section>
+        <section class="experiences">
             <h2>Previous Work Experience</h2>
-            <ul>
+            <ul class="experience-items">
                 <li>
                     <p><strong>Internship: </strong> Software Engineer Intern @ <em>TRACT</em></p>
                 </li>
@@ -68,9 +48,9 @@
 
         <br>
 
-        <section>
+        <section class="projects">
             <h2>Featured Projects</h2>
-            <ol>
+            <ol class="project-items">
                 <li><p>Successorator</p></li>
                 <li><p>YouLostIt</p></li>
                 <li><p>Recommender's Systems Paper</p></li>
@@ -96,13 +76,12 @@
 
     <footer>
         <p>&copy; 2025 Kenneth Tran</p>
-        <address>Contact me at  <a href="mailto:kenpt03@gmail.com">kenpt03@gmail.com</a></address>
-        <social-media platform="LinkedIn">
-            <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
-        </social-media>
-        <social-media platform="Github">
-            <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
-        </social-media>
+        <address>Contact me at <a href="mailto:kenpt03@gmail.com">kenpt03@gmail.com</a></address>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank" class="linkedin">LinkedIn</a>
+            <a href="https://github.com/21KennethTran" target="_blank" class="github">GitHub</a>
+        </div>
     </footer>
+    
 </body>
 </html>
