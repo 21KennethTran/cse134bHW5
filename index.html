@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My SWE Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,10 +24,13 @@
     <main>
         <section class="about-me">
             <div class="about-text">
-                <h2>About Me</h2>
-                <p>Hi, I'm a <b>software engineer</b> passionate about building <i>scalable</i> and <i>efficient</i> web applications.</p>
+                <h1>Hey There!</h1>
+                <p>
+                    My name is Kenneth and I am a <b>software engineer</b> passionate about building <i>scalable</i> and <i>efficient</i> web applications. I have studied
+                    a wide range of computer science concepts from embedded systems to web development to machine learning with many experiences and projects to show!
+                </p>
             </div>
-            <img src="img/me.jpg" alt="my pp">
+            <img src="img/me.jpg" alt="Picture of Kenneth Tran">
         </section>
 
         <br>
@@ -35,53 +39,102 @@
             <h2>Previous Work Experience</h2>
             <ul class="experience-items">
                 <li>
-                    <p><strong>Internship: </strong> Software Engineer Intern @ <em>TRACT</em></p>
+                    <article>
+                        <h3>Internship: Software Engineer Intern @ <em>TRACT</em></h3>
+                        <p class="description">Developed and maintained APIs in Python to optimize web scraping.</p>
+                        <a href="experience.html#tract-internship" class="read-more">Read More</a>
+                    </article>
                 </li>
                 <li>
-                    <p><strong>Internship: </strong> Embedded Software Engineer Intern @ <em>UCSD</em> </p>
+                    <article>
+                        <h3>Internship: Embedded Software Engineer Intern @ <em>UCSD</em></h3>
+                        <p class="description">Developed firmware and APIs for an IoT Bluetooth scanner.</p>
+                        <a href="experience.html#ucsd-embedded-internship" class="read-more">Read More</a>
+                    </article>
                 </li>
                 <li>
-                    <p><strong>Tutor: </strong> MATLAB Tutor @ <em>UCSD</em> </p>
+                    <article>
+                        <h3>Tutor: MATLAB Tutor @ <em>UCSD</em></h3>
+                        <p class="description">Taught MATLAB programming to undergraduate students.</p>
+                        <a href="experience.html#matlab-tutor" class="read-more">Read More</a>
+                    </article>
                 </li>
             </ul>
         </section>
+        
 
         <br>
 
         <section class="projects">
             <h2>Featured Projects</h2>
             <ol class="project-items">
-                <li><p>Successorator</p></li>
-                <li><p>YouLostIt</p></li>
-                <li><p>Recommender's Systems Paper</p></li>
+                <li>
+                    <article>
+                        <h3>Successorator</h3>
+                        <p>Productivity mobile app to help users keep track of long term and short term goals developed on Android Studio.</p>
+                        <a href="projects.html#successorator" class="read-more">Read More</a>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>YouLostIt</h3>
+                        <p>A more intuitive Apple Airtag featuring Bluetooth low energy and accelerometer functions developed on STM32 board.</p>
+                        <a href="projects.html#youlostit" class="read-more">Read More</a>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Hawaii Recommender's Systems Paper</h3>
+                        <p>Exploring popular recommendation algorithms on Hawaiian businesses and people data provided by Google Locale.</p>
+                        <a href="projects.html#hawaii-recommender-systems" class="read-more">Read More</a>
+                    </article>
+                </li>
             </ol>
         </section>
+        
 
         <br>
 
         <!-- I will likely implement this in my experience section later on! -->
-        <section>
+        <section class="skills">
             <h2>Skills</h2>
             <dl>
-                <dt>Frontend Development</dt>
-                <dd>Proficient in HTML, CSS, JavaScript, and React.</dd>
-                <dt>Backend Development</dt>
-                <dd>Experience with Node.js, Python, and databases like MongoDB and PostgreSQL.</dd>
-                <dt>Tools</dt>
-                <dd>Familiar with Git, Docker, Android Studio, Kubernetes and CI/CD pipelines.</dd>
+                <dt>Languages</dt>
+                <dd>Python, C/C++, Java, JavaScript, HTML/CSS, MATLAB, LaTeX</dd>
+        
+                <dt>Frameworks</dt>
+                <dd>React, Node.js, JUnit, Flask</dd>
+        
+                <dt>Developer Tools</dt>
+                <dd>Git, GitHub, Vim, Visual Studio Code, Android Studio, Google Colab, MongoDB</dd>
+        
+                <dt>Libraries</dt>
+                <dd>pandas, NumPy, Matplotlib, Requests, BeautifulSoup4, scikit-learn</dd>
             </dl>
         </section>
+        
+        
         
     </main>
 
     <footer>
+        <ul class="footer-social">
+            <li>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:kenpt03@gmail.com">Gmail</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
         <p>&copy; 2025 Kenneth Tran</p>
-        <address>Contact me at <a href="mailto:kenpt03@gmail.com">kenpt03@gmail.com</a></address>
-        <div class="footer-social">
-            <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank" class="linkedin">LinkedIn</a>
-            <a href="https://github.com/21KennethTran" target="_blank" class="github">GitHub</a>
-        </div>
-    </footer>
+    </footer>    
+    
     
 </body>
 </html>

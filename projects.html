@@ -4,29 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
-    <style>
-        span {
-          border-color: black;
-          border-style: solid;
-        }
-        social-media {
-          display: block;
-        }
-  
-        social-media[platform="LinkedIn"] a {
-          background-color: #0077b5; /* Red */
-          color: #fff;
-        }
-  
-        social-media[platform="Github"] a {
-          background-color: #333; /* Amber */
-          color: #fff;
-        }
-  
-        social-media:hover {
-          opacity: 0.8;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -42,28 +21,21 @@
     </header>
 
     <main>
-        <section>
+        <section class="projects-section">
             <h2>Projects</h2>
-            <article>
+    
+            <article id="successorator">
                 <h3>Sucessorator</h3>
-                <p>
-                    A web application designed to help users manage their tasks efficiently. Built using <strong>Java</strong> on <strong>Android Studio</strong>.
-                </p>
-                <!-- <figure>
-                    <img src="task-app-screenshot.jpg" alt="Task Management App Screenshot">
-                    <figcaption>Screenshot of the Task Management App</figcaption>
-                </figure> -->
+                <p>A web application designed to help users manage their tasks efficiently. Built using <strong>Java</strong> on <strong>Android Studio</strong>.</p>
                 <ul>
                     <li><strong>Technologies Used:</strong> Android Studio, Java, JUnit</li>
                 </ul>
                 <a href="https://github.com/21KennethTran/successorator" target="_blank">View on GitHub</a>
             </article>
-
-            <article>
+    
+            <article id="youlostit">
                 <h3>Recommender System for Hawaii Businesses</h3>
-                <p>
-                    Machine learning models trained to recommend businesses to users using <strong>Python</strong>.
-                </p>
+                <p>Machine learning models trained to recommend businesses to users using <strong>Python</strong>.</p>
                 <figure>
                     <img src="img/hawaii.png" alt="Hawaii Screenshot">
                     <figcaption>Density of Businesses by Island</figcaption>
@@ -75,20 +47,16 @@
                 <details>
                     <summary>Read the Paper Here Instead!</summary>
                     <iframe src="https://drive.google.com/file/d/1qQpFY97YZfsBb4JAJNIB-z3jmay9c9Q8/preview" 
-                        width="600" 
-                        height="800" 
-                        allow="autoplay">
-</iframe>
+                            width="600" height="800" allow="autoplay">
+                    </iframe>
                 </details>
             </article>
-
-            <article>
+    
+            <article id="hawaii-recommender-systems">
                 <h3>YouLostIt (IoT)</h3>
-                <p>
-                    Leveraging Embedded systems to create a more intuitive Apple Airtag using <strong>C/C++</strong>.
-                </p>
+                <p>Leveraging Embedded systems to create a more intuitive Apple Airtag using <strong>C/C++</strong>.</p>
                 <details>
-                    <summary>Demo of board flashing my  <span>encrypted</span>  ID!</summary>
+                    <summary>Demo of board flashing my <span>encrypted</span> ID!</summary>
                     <video controls>
                         <source src="img/blinker2.mp4" type="video/mp4">
                         Your browser does not support the video element.
@@ -100,9 +68,8 @@
                 <a href="https://github.com/21KennethTran/youlostit" target="_blank">View on GitHub</a>
             </article>
         </section>
-
-        <!-- I may want to style this differently later! -->
-        <div>
+    
+        <div class="other-projects">
             <h2>Other Projects</h2>
             <table>
                 <caption>Projects in Progress...</caption>
@@ -131,28 +98,35 @@
                     </tr>
                     <tr>
                         <td>Guitar Tuner</td>
-                        <td>A full stack application to help users tune their guitar and translate their music into sheet music</td>
+                        <td>A full stack application to help users tune their guitar and translate their music into sheet music.</td>
                         <td>JavaScript, HTML, CSS, PostgreSQL, Node.js</td>
                     </tr>
                     <tr>
                         <td>WebScrapers</td>
-                        <td>Several webscrapers aimed to collect financial data from public companies</td>
-                        <td>Python, BeautifulSoup4, Javascript</td>
+                        <td>Several webscrapers aimed to collect financial data from public companies.</td>
+                        <td>Python, BeautifulSoup4, JavaScript</td>
                     </tr>
-                    
                 </tbody>
             </table>
         </div>
     </main>
+    
     <footer>
+        <ul class="footer-social">
+            <li>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:kenpt03@gmail.com">Gmail</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
         <p>&copy; 2025 Kenneth Tran</p>
-        <address>Contact me at <a href="mailto:kenpt03@gmail.com">kenpt03@gmail.com</a></address>
-        <social-media platform="LinkedIn">
-            <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
-        </social-media>
-        <social-media platform="Github">
-            <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
-        </social-media>
     </footer>
 </body>
 </html>

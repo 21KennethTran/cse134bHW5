@@ -4,30 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Experience</title>
-    <style>
-        social-media {
-          display: block;
-        }
-  
-        social-media[platform="LinkedIn"] a {
-          background-color: #0077b5; /* Red */
-          color: #fff;
-        }
-  
-        social-media[platform="Github"] a {
-          background-color: #333; /* Amber */
-          color: #fff;
-        }
-  
-        social-media:hover {
-          opacity: 0.8;
-        }
-  
-      </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Kenneth Tran</h1>
+        
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -39,53 +22,56 @@
     </header>
 
     <main>
-        <section>
+        <section class="experience-section">
             <h2>Previous Work Experience</h2>
-            <article>
+            <article id="tract-internship">
                 <h3>Software Engineer Intern</h3>
                 <p>
                     Implemented and maintained ethical web scrapers to gauge business individuals' social media score.
                 </p>
-                
                 <ul>
                     <li><strong>Technologies Used:</strong> React, Node.js, MongoDB</li>
                 </ul>
             </article>
-
-            <article>
+    
+            <article id="ucsd-embedded-internship">
                 <h3>Embedded Software Engineer Intern</h3>
                 <p>
                     Designed and implemented Bluetooth scanning protocol on embedded boards to determine number of people in a facility at a given time.
                 </p>
-                
                 <ul>
                     <li><strong>Technologies Used:</strong> C/C++, Python</li>
                 </ul>
             </article>
-
-            <article>
+    
+            <article id="matlab-tutor">
                 <h3>MATLAB Tutor</h3>
                 <p>
                     A machine learning model trained to recognize objects in images using <strong>TensorFlow</strong> and <strong>Python</strong>.
                 </p>
-                
                 <ul>
                     <li><strong>Technologies Used:</strong> MATLAB</li>
                 </ul>
             </article>
         </section>
-
     </main>
-
+    
     <footer>
+        <ul class="footer-social">
+            <li>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:kenpt03@gmail.com">Gmail</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
+            </li>
+            <li>
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
         <p>&copy; 2025 Kenneth Tran</p>
-        <address>Contact me at  <a href="mailto:kenpt03@gmail.com">kenpt03@gmail.com</a></address>
-        <social-media platform="LinkedIn">
-            <a href="https://www.linkedin.com/in/kenneth-tran-ba708b222/" target="_blank">LinkedIn</a>
-        </social-media>
-        <social-media platform="Github">
-            <a href="https://github.com/21KennethTran" target="_blank">GitHub</a>
-        </social-media>
-    </footer>
+    </footer> 
 </body>
 </html>
