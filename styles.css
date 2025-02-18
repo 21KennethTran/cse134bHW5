@@ -1,0 +1,819 @@
+/* reset, mostly taken from https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  margin: 0; /* Ensure there is no margin */
+  /* overflow: hidden; */
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+
+/* CSS Variables */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Use Roboto as the primary font with Arial as fallback */
+:root {
+    --primary-color: #2c3e50;
+    --linkedin-color: #0077b5;
+    --github-color: #333;
+    --gmail-color: #D14836;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --font-stack: 'Roboto', Arial, sans-serif;
+}
+
+/* Apply font to the body */
+body {
+    font-family: var(--font-stack);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+
+/* Header and Navigation Style using nested css */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  
+    nav {
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin-left: auto;
+  
+        li {
+          a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+/* About Me Section */
+.about-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    padding: 3rem;
+    border-radius: 10px;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+}
+
+.about-me img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    flex-basis: 30%;
+    margin-right: 3rem;
+}
+
+.about-me img:hover {
+    transform: scale(1.05);
+}
+
+.about-text {
+    background-color: #5f8a71;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    position: relative;
+    max-width: 70%;
+    min-width: 250px;
+    flex-basis: 70%;
+    z-index: 1;
+}
+
+/* Dark blue supposed to be behind green and text; unintended */
+.about-text::before {
+    content: '';
+    position: absolute;
+    top: -5px;  
+    left: -5px; 
+    width: 100%;
+    height: 100%;
+    background-color: #2c3e50;
+    border-radius: 12px;
+    z-index: -1; /* Ensures it stays behind the text */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-text h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Responsive scaling for larger screens */
+@media (min-width: 768px) {
+    .about-me {
+        gap: 4rem;
+        padding: 3rem 5rem;
+    }
+
+    .about-text {
+        max-width: 60%;
+    }
+
+    .about-me img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-me img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+
+/* Experiences section */
+.experiences {
+    background-color: #f0f0f0;
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto; /* Adjust column sizes */
+    gap: 2rem;
+    align-items: start;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+.experiences h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    grid-column: 1;
+    grid-row: 1; 
+    align-self: center;
+    justify-self: start;
+    margin-bottom: 0;
+}
+
+.experience-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 2rem;
+    grid-column: 1 / 5;
+}
+
+.experience-items li:nth-child(1) {
+    grid-column: 3 / 5;
+    grid-row: 1;
+}
+.experience-items li:nth-child(2) {
+    grid-column: 2 / 4;
+    grid-row: 2;
+}
+.experience-items li:nth-child(3) {
+    grid-column: 1 / 3;
+    grid-row: 3;
+}
+
+.experience-items li {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.experience-items li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.experience-items li article h3 {
+    margin-bottom: 0.5rem;
+}
+
+.experience-items li article p {
+    margin-bottom: 1rem;
+}
+
+.experience-items li article .read-more {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* basically the same as using hex values? */
+.experience-items li article .read-more:hover {
+    color: color(display-p3 1 1 1);
+    background-color: color(display-p3 0.2 0.5 0.8); 
+    transform: scale(1.05);
+}
+
+
+
+
+/* Projects section */
+.projects {
+    background-color: #f0f0f0;
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: start;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.projects h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    grid-column: 4;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    margin-bottom: 0;
+}
+
+.project-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 2rem;
+    grid-column: 1 / 5;
+}
+
+.project-items li:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+.project-items li:nth-child(2) {
+    grid-column: 2 / 4;
+    grid-row: 2;
+}
+.project-items li:nth-child(3) {
+    grid-column: 3 / 5;
+    grid-row: 3;
+}
+
+.project-items li {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-items li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.project-items li article h3 {
+    margin-bottom: 0.5rem;
+}
+
+.project-items li article p {
+    margin-bottom: 1rem;
+}
+
+.project-items li article .read-more {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* using color-mix */
+.project-items li article .read-more:hover {
+    color: #fff;
+    background-color: color-mix(in srgb, #3498db 60%, #8e44ad 40%);
+    transform: scale(1.05);
+}
+  
+
+
+/* Skills section */
+.skills {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.skills h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.skills dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem;
+}
+
+.skills dt {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.skills dd {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+    padding-left: 0.5rem;
+    border-left: 4px solid #3498db;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+    .skills dl {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .skills dl {
+        grid-template-columns: 1fr; /* 1 column for small screens */
+    }
+}
+
+
+
+/* footer style */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2dvh 2dvw;
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-social li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer-social i {
+    font-size: 1.5rem;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social i:hover, .footer-social a:hover {
+    transform: scale(1.2);
+}
+
+
+.footer-social .fa-envelope {
+    color: var(--gmail-color);
+}
+
+/* black does not fit well with the background color */
+.footer-social .fa-github {
+    color: white;
+}
+
+.footer-social .fa-linkedin {
+    color: var(--linkedin-color);
+}
+
+/* Responsive: Keep everything centered */
+@media (max-width: 768px) {
+
+    .footer-social {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
+
+
+/* Main Content Styles */
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+
+
+/* Experience page */
+.experience-section {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.experience-section h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.experience-section article {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.experience-section article:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.experience-section article h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.experience-section article p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.experience-section article ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.experience-section article ul li {
+    font-size: 1rem;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+    .experience-section {
+        padding: 1.5rem;
+    }
+
+    .experience-section article {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .experience-section {
+        padding: 1rem;
+    }
+
+    .experience-section article {
+        padding: 0.8rem;
+    }
+}
+
+
+
+/* Projects page */
+.projects-section {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.projects-section h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.projects-section article {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.projects-section article:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.projects-section article h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.projects-section article p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.projects-section figure {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.projects-section img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.projects-section figcaption {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.projects-section video {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+
+.projects-section a {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.projects-section a:hover {
+    background-color: #2980b9;
+}
+
+.projects-section details {
+    margin-top: 1rem;
+}
+
+.projects-section summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Experimenting with animation */
+@keyframes rotateArrow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+}
+
+/* I am not sure how to just animate the default arrows */
+.projects-section details summary {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+}
+
+.projects-section details summary::before {
+    content: '►';
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.projects-section details[open] summary::before {
+    content: '▼';
+    transform: rotate(180deg);
+}
+
+
+.other-projects {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.other-projects h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.other-projects table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.other-projects table th, .other-projects table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.other-projects table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.other-projects table td {
+    background-color: #f9f9f9;
+}
+
+.other-projects table caption {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.other-projects table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+    .projects-section {
+        padding: 1.5rem;
+    }
+
+    .projects-section article {
+        padding: 1rem;
+    }
+
+    .other-projects {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-section {
+        padding: 1rem;
+    }
+
+    .projects-section article {
+        padding: 0.8rem;
+    }
+
+    .other-projects table th, .other-projects table td {
+        padding: 0.8rem;
+    }
+}
