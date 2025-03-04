@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation (No JavaScript)</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input:required, textarea:required {
+            border-color: orange;
+        }
+
+        input:optional, textarea:optional {
+            border-color: #ccc;
+        }
+
+        input:not(:required):not(:optional):placeholder-shown,
+        textarea:not(:required):not(:optional):placeholder-shown {
+            border-color: #ccc; /* Default border color for placeholder-shown */
+        }
+
+
+        input:valid, textarea:valid {
+            border: 2px solid green;
+        }
+
+        input:invalid:focus, textarea:invalid:focus {
+            border: 2px solid red;
+        }
+
+        input:invalid:not(:focus):not(:placeholder-shown),
+        textarea:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: red;
+        }
+
+        .error-message {
+            display: none;
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        input:not(:placeholder-shown):invalid ~ .error-message,
+        textarea:not(:placeholder-shown):invalid ~ .error-message,
+        input:focus:invalid ~ .error-message,
+        textarea:focus:invalid ~ .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required minlength="1" maxlength="50" placeholder="Enter your name">
+        <div class="error-message">Name is required and must be 2-50 characters long.</div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+        <div class="error-message">Please enter a valid email address.</div>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" required minlength="10" maxlength="500" placeholder="Enter your comments (10-500 characters)"></textarea>
+        <div class="error-message">Comments must be 10-500 characters long.</div>
+
+        <input type="hidden" name="possible_bot" value="true">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
