@@ -8,6 +8,7 @@
     <!-- defer stylesheet? -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="/js/code-validation.js" defer></script>
 </head>
 <body>
     <header>
@@ -119,15 +120,17 @@
             <h2>Contact Me</h2>
             <form action="https://httpbin.org/post" method="POST">
                 <label for="name">Name:<span class="required">*</span></label>
-                <input type="text" id="name" name="name" placeholder="e.g., Jane Doe" required>
+                <input type="text" id="name" name="name" placeholder="e.g. Jane Doe" required>
                 
                 <label for="email">Email:<span class="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="e.g., janedoe@example.com" required>
+                <input type="email" id="email" name="email" placeholder="e.g. janedoe@example.com" required>
                 
                 <label for="comments">Comments:</label>
-                <textarea id="comments" name="comments" placeholder="e.g., I would like to chat." required></textarea>
+                <textarea id="comments" name="comments" placeholder="e.g. I would like to chat." required></textarea>
+                <div id="charCount">500 characters remaining</div>
                 
                 <input type="hidden" name="possible_bot" value="true">
+                <input type="hidden" id="formErrors" name="form-errors">
                 
                 <button type="submit">Send</button>
                 
