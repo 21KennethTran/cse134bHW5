@@ -9,7 +9,7 @@ export function getMyComponentCSS() {
             --border-radius: 8px;
             --padding: 1.5rem;
             --margin-bottom: 2rem;
-            display: block;
+            display: grid;
         }
 
         .experience-card {
@@ -18,7 +18,7 @@ export function getMyComponentCSS() {
             border-radius: var(--border-radius);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, background-color 0.3s ease;
-            display: flex;
+            display: inline-block;
             flex-direction: column;
         }
 
@@ -48,7 +48,7 @@ export function getMyComponentCSS() {
 
         .read-more:hover {
             color: white;
-            background-color: #2980b9; /* Darker blue for hover */
+            background-color: color-mix(in srgb, #3498db 60%, #8e44ad 40%);
             transform: scale(1.05);
         }
     `;
