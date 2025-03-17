@@ -5,12 +5,14 @@ class ExperienceCard extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
 
+        console.log("ExperienceCard constructor called.");
+
         const wrapper = document.createElement('article');
         wrapper.classList.add('experience-card');
 
         this.pictureEl = document.createElement('picture');
         this.sourceSmallEl = document.createElement('source');
-        this.imgEl = document.createElement('img'); // fall back for old browser?
+        this.imgEl = document.createElement('img');
 
         this.titleEl = document.createElement('h3');
         this.descEl = document.createElement('p');
@@ -31,10 +33,15 @@ class ExperienceCard extends HTMLElement {
         style.textContent = getMyComponentCSS();
 
         this.shadowRoot.append(style, wrapper);
+
+        console.log("ExperienceCard constructor completed.");
     }
 
     set data({ imageUrl, imageUrlSmall, imageAlt, title, description, linkUrl, linkText }) {
-        if (imageUrl && imageAlt) { // remove element altogether if imageurl not found?
+        console.log("set data called with:", { imageUrl, imageUrlSmall, imageAlt, title, description, linkUrl, linkText });
+
+        if (imageUrl && imageAlt) {
+            console.log("imageUrl and imageAlt are present. Setting image attributes.");
             this.imgEl.src = imageUrl;
             this.imgEl.alt = imageAlt;
             if (imageUrlSmall) {
@@ -42,12 +49,17 @@ class ExperienceCard extends HTMLElement {
                 this.sourceSmallEl.media = '(max-width: 600px)';
             }
         } else {
+            console.log("imageUrl or imageAlt is missing. Removing picture element.");
             this.pictureEl.remove();
         }
+
+        console.log("Setting text and link content.");
         this.titleEl.textContent = title;
         this.descEl.textContent = description;
         this.linkEl.href = linkUrl;
         this.linkEl.textContent = linkText;
+
+        console.log("set data completed.");
     }
 }
 

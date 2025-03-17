@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="/js/code-validation.js" defer></script>
     <script src="/js/theme-toggle.js" defer></script>
+    <script type="module" src="experience-card.js" defer></script>
 </head>
 <body>
     <header>
@@ -130,6 +131,7 @@
                     experienceItems.innerHTML = '';
                     console.log(data)
                     data.record.forEach(item => {
+                        console.log(item)
                         const card = document.createElement('experience-card');
                         card.data = item;
                         experienceItems.appendChild(card);
