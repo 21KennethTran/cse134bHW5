@@ -68,7 +68,12 @@
 
         <section class="experiences">
             <h2>Previous Work Experience</h2>
-            <ul class="experience-items">
+            <section class="experience-buttons">
+                <button id="load-local">Load Local</button>
+                <button id="load-remote">Load Remote</button>
+            </section>
+            <section class="experience-items">
+            <!-- <ul class="experience-items">
                 <li>
                     <article>
                         <h3>Internship: Software Engineer Intern @ <em>TRACT</em></h3>
@@ -90,8 +95,55 @@
                         <a href="experience.html#matlab-tutor" class="read-more">Read More</a>
                     </article>
                 </li>
-            </ul>
+            </ul> -->
         </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log("DOM Content loaded");
+
+                const loadLocalButton = document.getElementById('load-local');
+                const loadRemoteButton = document.getElementById('load-remote');
+                const experienceItems = document.querySelector('.experience-items');
+    
+                function loadLocalData() {
+                    console.log("local button clicked");
+                    const experienceData = JSON.parse(localStorage.getItem('experienceData')) || [];
+                    populateCards(experienceData);
+                }
+    
+                async function loadRemoteData() {
+                    console.log("remote button clicked");
+                    try {
+                        const response = await fetch('https://api.jsonbin.io/v3/b/67d798b58960c979a573047a');
+                        console.log(response.status)
+                        const data = await response.json();
+                        populateCards(data);
+                        localStorage.setItem('experienceData', JSON.stringify(data));
+                    } catch (error) {
+                        console.error('Error fetching remote data:', error);
+                    }
+                }
+    
+                function populateCards(data) {
+                    console.log("populating")
+                    experienceItems.innerHTML = '';
+                    console.log(data)
+                    data.record.forEach(item => {
+                        const card = document.createElement('experience-card');
+                        card.data = item;
+                        experienceItems.appendChild(card);
+                    });
+                }
+    
+                loadLocalButton.addEventListener('click', loadLocalData);
+                loadRemoteButton.addEventListener('click', loadRemoteData);
+    
+                if(localStorage.getItem('experienceData')){
+                    loadLocalData();
+                }
+            });
+        </script>
         
 
         <br>
