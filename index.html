@@ -11,6 +11,7 @@
     <script src="/js/code-validation.js" defer></script>
     <script src="/js/theme-toggle.js" defer></script>
     <script type="module" src="experience-card.js" defer></script>
+    <script type="module" src="project-card.js" defer></script>
 </head>
 <body>
     <header>
@@ -94,7 +95,6 @@
                     console.log("remote button clicked");
                     try {
                         const response = await fetch('https://api.jsonbin.io/v3/b/67d798b58960c979a573047a');
-                        console.log(response.status)
                         const data = await response.json();
                         populateCards(data);
                         localStorage.setItem('experienceData', JSON.stringify(data));
@@ -104,11 +104,8 @@
                 }
     
                 function populateCards(data) {
-                    console.log("populating")
                     experienceItems.innerHTML = '';
-                    console.log(data)
                     data.record.forEach(item => {
-                        console.log(item)
                         const card = document.createElement('experience-card');
                         card.data = item;
                         experienceItems.appendChild(card);
@@ -129,6 +126,14 @@
 
         <section class="projects">
             <h2>Featured Projects</h2>
+            <section class="project-buttons">
+                <button id="load-local-projects">Load Local</button>
+                <button id="load-remote-projects">Load Remote</button>
+            </section>
+            <section class="project-items"> </section>
+
+
+<!-- 
             <ol class="project-items">
                 <li>
                     <article>
@@ -151,9 +156,55 @@
                         <a href="projects.html#hawaii-recommender-systems" class="read-more">Read More</a>
                     </article>
                 </li>
-            </ol>
+            </ol> -->
         </section>
         
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log("DOM Content loaded");
+
+                const loadLocalButtonProject = document.getElementById('load-local-projects');
+                const loadRemoteButtonProject = document.getElementById('load-remote-projects');
+                const projectItems = document.querySelector('.project-items');
+    
+                function loadLocalData() {
+                    console.log("local button clicked");
+                    const projectData = JSON.parse(localStorage.getItem('projectData')) || [];
+                    populateCards(projectData);
+                }
+    
+                async function loadRemoteData() {
+                    console.log("remote button clicked");
+                    try {
+                        const response = await fetch('https://api.jsonbin.io/v3/b/67d7bc7a8960c979a57313c1');
+                        const data = await response.json();
+                        populateCards(data);
+                        localStorage.setItem('projectData', JSON.stringify(data));
+                    } catch (error) {
+                        console.error('Error fetching remote data:', error);
+                    }
+                }
+    
+                function populateCards(data) {
+                    projectItems.innerHTML = '';
+                    data.record.forEach(item => {
+                        console.log(item)
+                        const card = document.createElement('project-card');
+                        card.data = item;
+                        projectItems.appendChild(card);
+                    });
+                }
+    
+                loadLocalButtonProject.addEventListener('click', loadLocalData);
+                loadRemoteButtonProject.addEventListener('click', loadRemoteData);
+    
+                if(localStorage.getItem('projectData')){
+                    loadLocalData();
+                }
+            });
+        </script>
+
 
         <br>
 
