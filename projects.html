@@ -26,6 +26,14 @@
     </header>
 
     <main>
+        <!-- Visible only when JavaScript is disabled -->
+        <noscript>
+            <section class="noscript-warning">
+                <p><strong>Note:</strong> For more accurate and updated details of my projects, please have Javascript enabled!</p>
+            </section>
+        </noscript>
+
+        <!-- Default view; does not use CDN -->
         <section class="projects-section">
             <h2>Projects</h2>
     
@@ -38,7 +46,7 @@
                 <a href="https://github.com/21KennethTran/successorator" target="_blank">View on GitHub</a>
             </article>
     
-            <article id="youlostit">
+            <article id="hawaii-recommender-systems">
                 <h3>Recommender System for Hawaii Businesses</h3>
                 <p>Machine learning models trained to recommend businesses to users using <strong>Python</strong>.</p>
                 <figure>
@@ -57,7 +65,7 @@
                 </details>
             </article>
     
-            <article id="hawaii-recommender-systems">
+            <article id="youlostit">
                 <h3>YouLostIt (IoT)</h3>
                 <p>Leveraging Embedded systems to create a more intuitive Apple Airtag using <strong>C/C++</strong>.</p>
                 <details>
@@ -73,6 +81,104 @@
                 <a href="https://github.com/21KennethTran/youlostit" target="_blank">View on GitHub</a>
             </article>
         </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+                const projectsSection = document.querySelector('.projects-section')
+                const LOCAL_STORAGE_KEY = 'cachedProjectData'
+
+                function createMediaElements(fileUrls, fileTypes) {
+                    if (!fileUrls || !fileTypes) return ''
+
+                    return fileUrls.map((url, i) => {
+                        const type = fileTypes[i]
+                        if (type === 'pdf') {
+                            return `
+                                <details style="display: block; width: fit-content; margin: 1rem auto; text-align: left;">
+                                    <summary style="cursor: pointer; font-weight: bold; text-align: center;">
+                                        Read the Paper Here Instead!
+                                    </summary>
+                                    <iframe src="${url}" width="700" height="900" allow="autoplay"
+                                            style="display: block; margin: 0.5rem auto;"></iframe>
+                                </details>
+                            `
+                        } else if (type === 'mp4') {
+                            return `<video controls style="display: block; margin: 1rem auto; width: 300px; max-height: 500px;">
+                                        <source src="${url}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>`;
+                        } else if (['png', 'jpg', 'jpeg', 'gif'].includes(type)) {
+                            return `<img src="${url}" alt="Project asset" style="display: block; margin: 1rem auto; max-width: 90%; height: auto;" />`;
+                        } else {
+                            return `<a href="${url}" target="_blank" style="display:block; margin-top: 1rem;">View file</a>`;
+                        }
+                    }).join('')
+                }
+
+                function renderProjects(projects) {
+                    projectsSection.innerHTML = '<h2>Projects</h2>';
+                    projects.forEach(project => {
+                        const article = document.createElement('article');
+                        article.id = project.id;
+
+                        const title = document.createElement('h3');
+                        title.textContent = project.name;
+
+                        const meta = document.createElement('p');
+                        meta.innerHTML = `<em>${project.date}</em>`;
+
+                        const techList = document.createElement('ul');
+                        const techItem = document.createElement('li');
+                        techItem.innerHTML = `<strong>Technologies Used:</strong> ${project.technologies.join(', ')}`;
+                        techList.appendChild(techItem);
+
+                        const descList = document.createElement('ul');
+                        project.description.forEach(line => {
+                            const li = document.createElement('li');
+                            li.textContent = line;
+                            descList.appendChild(li);
+                        })
+
+                        const mediaHTML = createMediaElements(project.fileUrl, project.fileType);
+                        const mediaWrapper = document.createElement('div');
+                        mediaWrapper.innerHTML = mediaHTML;
+
+                        const sourceLink = document.createElement('a');
+                        sourceLink.href = project.sourceURL;
+                        sourceLink.target = "_blank";
+                        sourceLink.textContent = 'View on GitHub';
+                        
+
+                        article.appendChild(title);
+                        article.appendChild(meta);
+                        article.appendChild(techList);
+                        article.appendChild(descList);
+                        article.appendChild(mediaWrapper);
+                        article.appendChild(sourceLink);
+
+                        projectsSection.appendChild(article);
+                    })
+                }
+
+                try {
+                    const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
+                    if (cached) {
+                        const cachedData = JSON.parse(cached);
+                        renderProjects(cachedData);
+                        return;
+                    }
+
+                    const response = await fetch('https://api.jsonbin.io/v3/b/687ffd63f7e7a370d1ec38e2');
+                    const data = await response.json();
+                    const projects = data.record;
+
+                    renderProjects(projects);
+                    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(projects));
+                } catch (error) {
+                    console.error('Failed to load projects: ', error);
+                }
+            })
+        </script>
     
         <div class="other-projects">
             <h2>Other Projects</h2>
@@ -92,14 +198,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Portfolio</td>
+                        <td>This Portfolio</td>
                         <td>A personal portfolio website showcasing my projects, skills, and experience.</td>
-                        <td>HTML, CSS, JavaScript, React (hopefully)</td>
-                    </tr>
-                    <tr>
-                        <td>Designing a 16-bit Processor</td>
-                        <td>Simple accumulator ISA to handle basic arithmetic with limited number of registers.</td>
-                        <td>Verilog</td>
+                        <td>HTML, CSS, JavaScript</td>
                     </tr>
                     <tr>
                         <td>Guitar Tuner</td>

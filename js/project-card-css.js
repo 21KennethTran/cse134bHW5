@@ -12,6 +12,14 @@ export function getMyComponentCSS() {
             display: grid;
         }
 
+        :host-context(body.dark-theme) {
+            --card-bg: #1e1e1e;
+            --text-color: #f0f0f0;
+            --secondary-text-color: #cccccc;
+            --accent-color: #4aa3df;
+            --accent-bg: #2c2c2c;
+        }
+
         .project-card {
             background-color: var(--card-bg);
             padding: var(--padding);
